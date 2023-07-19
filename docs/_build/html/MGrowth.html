@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modified Growth Functions &mdash; MGrowth 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to MGrowth’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MGrowth
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modified Growth Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.MGrowth"><code class="docutils literal notranslate"><span class="pre">MGrowth</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.MGrowth.Omega_m"><code class="docutils literal notranslate"><span class="pre">MGrowth.Omega_m()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.MGrowth.dlnH_dlna"><code class="docutils literal notranslate"><span class="pre">MGrowth.dlnH_dlna()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.MGrowth.Friction"><code class="docutils literal notranslate"><span class="pre">MGrowth.Friction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.MGrowth.D_derivatives"><code class="docutils literal notranslate"><span class="pre">MGrowth.D_derivatives()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.MGrowth.MG_D_derivatives"><code class="docutils literal notranslate"><span class="pre">MGrowth.MG_D_derivatives()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.MGrowth.IDE_D_derivatives"><code class="docutils literal notranslate"><span class="pre">MGrowth.IDE_D_derivatives()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.LCDM"><code class="docutils literal notranslate"><span class="pre">LCDM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.LCDM.growth_parameters"><code class="docutils literal notranslate"><span class="pre">LCDM.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.wCDM"><code class="docutils literal notranslate"><span class="pre">wCDM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.wCDM.growth_parameters"><code class="docutils literal notranslate"><span class="pre">wCDM.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.w0waCDM"><code class="docutils literal notranslate"><span class="pre">w0waCDM</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.w0waCDM.growth_parameters"><code class="docutils literal notranslate"><span class="pre">w0waCDM.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.IDE"><code class="docutils literal notranslate"><span class="pre">IDE</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.IDE.growth_parameters"><code class="docutils literal notranslate"><span class="pre">IDE.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.fR_HS"><code class="docutils literal notranslate"><span class="pre">fR_HS</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.fR_HS.growth_parameters"><code class="docutils literal notranslate"><span class="pre">fR_HS.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.nDGP"><code class="docutils literal notranslate"><span class="pre">nDGP</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.nDGP.beta"><code class="docutils literal notranslate"><span class="pre">nDGP.beta()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.nDGP.growth_parameters"><code class="docutils literal notranslate"><span class="pre">nDGP.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.Linder_gamma"><code class="docutils literal notranslate"><span class="pre">Linder_gamma</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.Linder_gamma.growth_parameters"><code class="docutils literal notranslate"><span class="pre">Linder_gamma.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.Linder_gamma_a"><code class="docutils literal notranslate"><span class="pre">Linder_gamma_a</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.Linder_gamma_a.growth_parameters"><code class="docutils literal notranslate"><span class="pre">Linder_gamma_a.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#MGrowth.mu_a"><code class="docutils literal notranslate"><span class="pre">mu_a</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#MGrowth.mu_a.growth_parameters"><code class="docutils literal notranslate"><span class="pre">mu_a.growth_parameters()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MGrowth</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modified Growth Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/MGrowth.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="modified-growth-functions">
+<span id="mgrowth"></span><h1>Modified Growth Functions<a class="headerlink" href="#modified-growth-functions" title="Permalink to this heading"></a></h1>
+<p>Function to compute growth parameters for modified gravity.</p>
+<span class="target" id="module-MGrowth"></span><dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.MGrowth">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">MGrowth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.11)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.MGrowth.Omega_m">
+<span class="sig-name descname"><span class="pre">Omega_m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth.Omega_m"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth.Omega_m" title="Permalink to this definition"></a></dt>
+<dd><p>Computes a function <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a)\)</span> as a fuction of the scale-factor:</p>
+<div class="math notranslate nohighlight">
+\[\Omega_\mathcal{m}(a) = \frac{\Omega_{m,0} a^{-3}}
+{E^2(a)} = \frac{\Omega_{m,0} a^{-3}}
+{\Omega_{m,0} a^{-3}+\Omega_\mathrm{DE}(a)}\]</div>
+<p>assuming a flat universe with the expansion history <span class="math notranslate nohighlight">\(H(a)=H_0 E(a)\)</span> the dark
+energy component that evolves as
+<span class="math notranslate nohighlight">\(\Omega_\mathrm{DE}(a) = (1-\Omega_\mathrm{m, 0}) a^{-3(1+w_0+w_a)} \mathrm{e}^{3(a-1)w_a}\)</span>.</p>
+<dl>
+<dt>Args:</dt><dd><p>a       (array):  scale factor array, is strictly increasing</p>
+<p>omega0  (scalar): value of <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a=1) = \Omega_\mathrm{m,0}\)</span></p>
+<p>w0      (scalar): dark energy equation of state parameter</p>
+<p>wa      (scalar): dark energy equation of state parameter</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: Omega_m(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.MGrowth.dlnH_dlna">
+<span class="sig-name descname"><span class="pre">dlnH_dlna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth.dlnH_dlna"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth.dlnH_dlna" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the derivative of the ln(expansion) with respect to ln(scale factor):</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d} \ln{H}}{\mathrm{d} \ln{a}} =
+ -\frac{3}{2} \frac{\Omega_\mathrm{m} a^{-3} + (1+w_0+w_a[1-a])\Omega_\mathrm{DE}(a)}
+{\Omega_{m,0} a^{-3}+\Omega_\mathrm{DE}(a)}\]</div>
+<dl>
+<dt>Args:</dt><dd><p>a       (array):  scale factor array, is strictly increasing</p>
+<p>omega0  (scalar): value of <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a=1) = \Omega_\mathrm{m,0}\)</span></p>
+<p>w0      (scalar): dark energy equation of state parameter</p>
+<p>wa      (scalar): dark energy equation of state parameter</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: dlnH_dlna(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.MGrowth.Friction">
+<span class="sig-name descname"><span class="pre">Friction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth.Friction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth.Friction" title="Permalink to this definition"></a></dt>
+<dd><p>Computes the modification to Euler equation in the interacting dark energy scenario.</p>
+<dl>
+<dt>Args:</dt><dd><p>a       (array):  scale factor array, is strictly increasing</p>
+<p>omega0  (scalar): value of <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a=1) = \Omega_\mathrm{m,0}\)</span></p>
+<p>h       (scalar): value of the Hubble constans as in <span class="math notranslate nohighlight">\(H_0 = 100 h/\)</span> Mpc</p>
+<p>w0      (scalar): dark energy equation of state parameter</p>
+<p>wa      (scalar): dark energy equation of state parameter</p>
+<p>xi       (scalar): scattering strength</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: Friction(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.MGrowth.D_derivatives">
+<span class="sig-name descname"><span class="pre">D_derivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth.D_derivatives"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth.D_derivatives" title="Permalink to this definition"></a></dt>
+<dd><p>Function that is used with scipy.odeint to solve the following differential
+equation for the growth factor <span class="math notranslate nohighlight">\(D(a)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\ddot{D} +\left( 3 + \frac{\mathrm{d} \ln{H}}{\mathrm{d} \ln{a}} \right) \frac{\dot{D}}{a}-\frac{3}{2} \Omega_\mathrm{m}(a) \frac{D}{a^2} = 0\]</div>
+<p>with <span class="math notranslate nohighlight">\(\dot{}\)</span> denoting a derivative with respect to the scale factor.</p>
+<dl>
+<dt>Args:</dt><dd><p>D       (array): growth factor, is strictly increasing</p>
+<p>a       (array):  scale factor array</p>
+<p>omega0  (scalar): value of <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a=1) = \Omega_\mathrm{m,0}\)</span></p>
+<p>w0      (scalar): dark energy equation of state parameter</p>
+<p>wa      (scalar): dark energy equation of state parameter</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.MGrowth.MG_D_derivatives">
+<span class="sig-name descname"><span class="pre">MG_D_derivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu_interp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth.MG_D_derivatives"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth.MG_D_derivatives" title="Permalink to this definition"></a></dt>
+<dd><p>Function that is used with scipy.odeint to solve the following differential
+equation for the modified growth factor <span class="math notranslate nohighlight">\(D(a)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\ddot{D} +\left( 3 + \frac{\mathrm{d} \ln{H}}{\mathrm{d} \ln{a}} \right) \frac{\dot{D}}{a}-\frac{3}{2} \mu(a) \Omega_\mathrm{m}(a) \frac{D}{a^2}= 0\]</div>
+<p>with <span class="math notranslate nohighlight">\(\dot{}\)</span> denoting a derivative with respect to the scale factor and
+<span class="math notranslate nohighlight">\(\mu = \frac{G_\mathrm{eff}(a)}{G}\)</span> being a modification to the gravitational constant.</p>
+<dl>
+<dt>Args:</dt><dd><p>D           (array): growth factor</p>
+<p>a           (array):  scale factor array, is strictly increasing</p>
+<p>mu_interp   (interpolator):  interpolator for the modification to the gravitational constant</p>
+<p>omega0      (scalar): value of <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a=1) = \Omega_\mathrm{m,0}\)</span></p>
+<p>w0          (scalar): dark energy equation of state parameter</p>
+<p>wa          (scalar): dark energy equation of state parameter</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.MGrowth.IDE_D_derivatives">
+<span class="sig-name descname"><span class="pre">IDE_D_derivatives</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">D</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#MGrowth.IDE_D_derivatives"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.MGrowth.IDE_D_derivatives" title="Permalink to this definition"></a></dt>
+<dd><p>Function that is used with scipy.odeint to solve the following differential
+equation for the modified growth factor <span class="math notranslate nohighlight">\(D(a)\)</span> in iteracting dark energy:</p>
+<div class="math notranslate nohighlight">
+\[\ddot{D} +\left( 3 + \mathrm{Friction} + \frac{\mathrm{d} \ln{H}}{\mathrm{d} \ln{a}} \right) \frac{\dot{D}}{a}-\frac{3}{2} \Omega_\mathrm{m}(a) \frac{D}{a^2} = 0\]</div>
+<p>with <span class="math notranslate nohighlight">\(\dot{}\)</span> denoting a derivative with respect to the scale factor and
+<span class="math notranslate nohighlight">\(\mathrm{Friction} = (1+w(a))\xi \frac{\Omega_\mathrm{DE}(a) \rho_\mathrm{crit}}{H(a)}\)</span> being a modification to the Euler equation.</p>
+<dl>
+<dt>Args:</dt><dd><p>D           (array): growth factor</p>
+<p>a           (array):  scale factor array, is strictly increasing</p>
+<p>omega0      (scalar): value of <span class="math notranslate nohighlight">\(\Omega_\mathrm{m}(a=1) = \Omega_\mathrm{m,0}\)</span></p>
+<p>w0          (scalar): dark energy equation of state parameter</p>
+<p>wa          (scalar): dark energy equation of state parameter</p>
+<p>xi          (scalar): scattering strength</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.LCDM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">LCDM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#LCDM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.LCDM" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.LCDM.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#LCDM.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.LCDM.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f = \frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}\)</span>
+at the scale factor specified by initialisation in the <span class="math notranslate nohighlight">\(\Lambda\)</span> CDM cosmology.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.wCDM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">wCDM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#wCDM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.wCDM" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.wCDM.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#wCDM.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.wCDM.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f = \frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}\)</span>
+at the scale factor specified by initialisation in the wCDM cosmology with <span class="math notranslate nohighlight">\(w=w_0\)</span> specialised by the initalisation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.w0waCDM">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">w0waCDM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#w0waCDM"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.w0waCDM" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.w0waCDM.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#w0waCDM.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.w0waCDM.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f = \frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}\)</span>
+at the scale factor specified by initialisation in the <span class="math notranslate nohighlight">\(w_0 w_a\)</span> CDM cosmology.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.IDE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">IDE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#IDE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.IDE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.IDE.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#IDE.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.IDE.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f\)</span>
+at the scale factor specified by initialisation in the <span class="math notranslate nohighlight">\(w_0 w_a A\)</span> CDM cosmology, also
+known as interacting dark energy. In this abbreviation <span class="math notranslate nohighlight">\(w_0 w_a\)</span> are the parameters from the
+equation of state for dark energy: <span class="math notranslate nohighlight">\(w(a) = w_0 + w_a (1-a)\)</span> and parameter <span class="math notranslate nohighlight">\(A = (1+w(a)) \xi\)</span>
+is introduced in such way to allow us to sample the parameters space with clear definition of the
+<span class="math notranslate nohighlight">\(w(a) \sim -1\)</span> case.</p>
+<p>Args:
+xi       (scalar): scattering strength</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.fR_HS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">fR_HS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#fR_HS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.fR_HS" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.fR_HS.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fR0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#fR_HS.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.fR_HS.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes scale-dependent growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f = \frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}\)</span>
+at the scale factor specified by initialisation in a f(R) gravity in the <span class="math notranslate nohighlight">\(n=1\)</span> Hu-Sawicki model
+<span class="math notranslate nohighlight">\(f(R) = -m^2 \frac{c_1 (R/m^2)^n}{c_2(R/m^2)+1}\)</span> with <span class="math notranslate nohighlight">\(\mu(a, k) = 1 + \frac{1}{3} \frac{k^2}{k^2 + \frac{a^2}{3 k^2}}\)</span>
+and <span class="math notranslate nohighlight">\(f_{RR}(a) = \frac{n(n+1)}{m^2} \frac{c_1}{c_2^2} \left( \frac{m^2}{R}  \right)^{n+2}\)</span>
+where <span class="math notranslate nohighlight">\(\frac{c_1}{c_2^2} = -\frac{1}{n} \left( 1 + \frac{4 \Omega_\mathrm{DE,0}}{\Omega_\mathrm{m,0}} \right)^{n+1} f_{R0}\)</span>,
+<span class="math notranslate nohighlight">\(R(a) = m^2 \left( \frac{3}{a^3} + 2 \frac{c_1}{c_2} \right)\)</span>, <span class="math notranslate nohighlight">\(\frac{c_1}{c_2} = 6 \frac{\Omega_\mathrm{DE,0}}{\Omega_\mathrm{m,0}}\)</span>
+and <span class="math notranslate nohighlight">\(m^2 = H_0^2 \Omega_\mathrm{m,0}\)</span>.
+For <span class="math notranslate nohighlight">\(\Lambda\)</span> CDM scenario <span class="math notranslate nohighlight">\(f_{R0} = 0\)</span>, typical scenarios include a weak deviation
+with <span class="math notranslate nohighlight">\(f_{R0} = -10^{-6}\)</span> and a stronger deviation with <span class="math notranslate nohighlight">\(f_{R0} = -10^{-5}\)</span>.
+Only <span class="math notranslate nohighlight">\(\Lambda\)</span> CDM expansion is allowed due to the model specifics.</p>
+<dl>
+<dt>Args:</dt><dd><p>fR0       (positive float):  absolute value of the modification at <span class="math notranslate nohighlight">\(a=1\)</span>, a positive number between <span class="math notranslate nohighlight">\(10^{-9}\)</span> and <span class="math notranslate nohighlight">\(10^{-2}\)</span></p>
+<p>k         (array):   scales in <span class="math notranslate nohighlight">\(h/\)</span> Mpc</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(k, a), f(k, a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.nDGP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">nDGP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#nDGP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.nDGP" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.nDGP.beta">
+<span class="sig-name descname"><span class="pre">beta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omegarc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#nDGP.beta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.nDGP.beta" title="Permalink to this definition"></a></dt>
+<dd><p>Computes <span class="math notranslate nohighlight">\(\beta(a) = 1 + \frac{E(a)}{\sqrt{\Omega_\mathrm{rc}}} \left( 1 + \frac{1}{3}\frac{\mathrm{d} \ln{H}}{\mathrm{d} \ln{a}}  \right)\)</span>
+where <span class="math notranslate nohighlight">\(\Omega_\mathrm{rc} = \frac{1}{4 H_0^2 r_c^2}\)</span>.</p>
+<dl>
+<dt>Args:</dt><dd><p>a         (array):   values of scalar factors</p>
+<p>omegarc   (float):  value of the modification, a positive number between 1.e-6 and 1.e6</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: beta(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.nDGP.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">omegarc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-06</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#nDGP.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.nDGP.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f = \frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}\)</span>
+at the scale factor specified by initialisation for a nDGP cosmology with <span class="math notranslate nohighlight">\(\mu(a) = 1 + \frac{1}{3\beta(a)}\)</span>.
+For <span class="math notranslate nohighlight">\(\Lambda\)</span> CDM scenario <span class="math notranslate nohighlight">\(\Omega_\mathrm{rc} = 0\)</span>, typical scenarios include a weak deviation
+with <span class="math notranslate nohighlight">\(\Omega_\mathrm{rc} = 0.01\)</span> for <span class="math notranslate nohighlight">\(r_c = 5 H_0^{-1}\)</span> and a stronger deviation with
+<span class="math notranslate nohighlight">\(\Omega_\mathrm{rc} = 0.25\)</span> for <span class="math notranslate nohighlight">\(r_c = H_0^{-1}\)</span>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>omegarc   (float):  value of the modification, a positive number between 1.e-6 and 1.e6</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.Linder_gamma">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">Linder_gamma</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#Linder_gamma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.Linder_gamma" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.Linder_gamma.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#Linder_gamma.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.Linder_gamma.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth rate <span class="math notranslate nohighlight">\(f = \Omega_\mathrm{m}(a)^\gamma\)</span> and
+<span class="math notranslate nohighlight">\(D(a)=D_\mathrm{ini} \exp{\int_{a_\mathrm{ini}}^a \mathrm{d}\tilde{a} f(\tilde{a})/\tilde{a} }\)</span>
+with <span class="math notranslate nohighlight">\(D_\mathrm{ini} = D_{\Lambda \mathrm{CDM}} (a=10^{-4})\)</span>
+at the scale factor specified by initialisation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>gamma (float): growth index, equals 0.555 in standard cosmology</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.Linder_gamma_a">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">Linder_gamma_a</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#Linder_gamma_a"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.Linder_gamma_a" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.Linder_gamma_a.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#Linder_gamma_a.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.Linder_gamma_a.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth rate <span class="math notranslate nohighlight">\(f = \Omega_\mathrm{m}(a)^\gamma(a)\)</span> and
+<span class="math notranslate nohighlight">\(D(a)=D_\mathrm{ini} \exp{\int_{a_\mathrm{ini}}^a \mathrm{d}\tilde{a} f(\tilde{a})/\tilde{a} }\)</span>
+with <span class="math notranslate nohighlight">\(D_\mathrm{ini} = D_{\Lambda \mathrm{CDM}} (a=10^{-4})\)</span>
+at the scale factor specified by initialisation. The time parameterisation of
+the growth index is taken from arXiv: 2304.07281,
+namely <span class="math notranslate nohighlight">\(\gamma(a) = \gamma_0 + \gamma_1 \frac{(1-a)^2}{a}\)</span>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>gamma0 (float): growth index, equals 0.555 in standard cosmology
+gamma1 (float): growth index time component, equals 0 in standard cosmology</p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="MGrowth.mu_a">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">MGrowth.</span></span><span class="sig-name descname"><span class="pre">mu_a</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">CosmoDict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#mu_a"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.mu_a" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#MGrowth.MGrowth" title="MGrowth.MGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">MGrowth</span></code></a></p>
+<p>Minimal initialization requires the definition of a dictionary including
+only the cosmological parameters that are necessary to compute the expansion
+history and the scale factor(s).
+If the cosmology is not specified, hardcoded intial values are assumed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="MGrowth.mu_a.growth_parameters">
+<span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mu_interp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#mu_a.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.mu_a.growth_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Computes growth factor <span class="math notranslate nohighlight">\(D\)</span> and growth rate <span class="math notranslate nohighlight">\(f = \frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}\)</span>
+at the scale factor specified by initialisation for a modified cosmology with customed <span class="math notranslate nohighlight">\(\mu(a)\)</span>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mu_interp   (interpolator):  interpolator for the modification to the gravitational constant, should
+allow for <span class="math notranslate nohighlight">\(10^{-5} \geq a \geq 1.5\)</span> or <span class="math notranslate nohighlight">\(10^{-5} \geq a \geq a_{max}+0.5\)</span></p>
+</dd>
+<dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to MGrowth’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Maria Tsedrik.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
