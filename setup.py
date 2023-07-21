@@ -11,7 +11,7 @@ setup(
     name="MGrowth",
     version=0.0,
     url="https://github.com/MariaTsedrik/MGrowth",
-    author="",
+    author="Maria Tsedrik",
     author_email="",
     license="BSD",
     packages=find_packages(),
