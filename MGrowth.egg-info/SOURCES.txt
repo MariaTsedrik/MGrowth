@@ -1,0 +1,8 @@
+LICENSE
+README.md
+setup.py
+MGrowth/__init__.py
+MGrowth.egg-info/PKG-INFO
+MGrowth.egg-info/SOURCES.txt
+MGrowth.egg-info/dependency_links.txt
+MGrowth.egg-info/top_level.txt
