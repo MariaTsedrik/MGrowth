@@ -2,9 +2,9 @@
 
 MGrowth is a Python package for computing growth factor and rate in various cosmological scenarios.
 
-## Installation (not pip-installable yet)
+## Installation 
 
-Use the package manager [pip](https://pypi.org) to install MGrowth.
+Use the package manager [pip]([https://pypi.org](https://pypi.org/project/MGrowth/)) to install MGrowth.
 
 ```bash
 pip install MGrowth
@@ -15,6 +15,23 @@ Required python packages:
 * numpy
 * scipy
 
+## Running MGrowth
+```python
+import MGrowth as mg
+
+zz = [0.9, 1.2, 1.5, 1.8]
+aa = 1./(1.+np.array(zz[::-1])) ##should be increasing
+
+background ={'Omega_m':0.31,
+            'h' :0.74,
+            'w0': -1.3,
+            'wa': 0.4,
+            'a_arr': aa}
+
+cosmo1 = mg.LCDM(background)
+
+D, f = cosmo1.growth_parameters()
+```
 
 ## Available Models
 - LCDM: standard cosmological model with fixed $w=-1$
