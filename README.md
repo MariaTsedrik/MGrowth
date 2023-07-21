@@ -28,3 +28,5 @@ Required python packages:
 
 ## Documentation
 Documentation is available in docs/_build/html/index.html
+
+[![codeastro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet.svg)](https://semaphorep.github.io/codeastro/)
