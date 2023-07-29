@@ -14,6 +14,11 @@ pip install MGrowth
 Required python packages:
 * numpy
 * scipy
+For tutorials:
+* matplotlib
+* camb
+* emcee
+* getdist
 
 ## Running MGrowth
 ```python

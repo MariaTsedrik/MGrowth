@@ -373,7 +373,7 @@ class Linder_gamma(MGrowth):
         at the scale factor specified by initialisation.
 
         Args:
-            gamma (float): growth index, equals 0.555 in standard cosmology
+            gamma (float): growth index, equals 0.55 in standard cosmology
 
         Returns:
             array: D(a), f(a)
@@ -399,7 +399,7 @@ class Linder_gamma_a(MGrowth):
         namely :math:`\gamma(a) = \gamma_0 + \gamma_1 \\frac{(1-a)^2}{a}`.
 
         Args:
-            gamma0 (float): growth index, equals 0.555 in standard cosmology
+            gamma0 (float): growth index, equals 0.55 in standard cosmology
             gamma1 (float): growth index time component, equals 0 in standard cosmology 
 
         Returns:

@@ -432,7 +432,7 @@ If the cosmology is not specified, hardcoded intial values are assumed.</p>
 with <span class="math notranslate nohighlight">\(D_\mathrm{ini} = D_{\Lambda \mathrm{CDM}} (a=10^{-4})\)</span>
 at the scale factor specified by initialisation.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>gamma (float): growth index, equals 0.555 in standard cosmology</p>
+<dt>Args:</dt><dd><p>gamma (float): growth index, equals 0.55 in standard cosmology</p>
 </dd>
 <dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
 </dd>
@@ -452,14 +452,14 @@ If the cosmology is not specified, hardcoded intial values are assumed.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="MGrowth.Linder_gamma_a.growth_parameters">
 <span class="sig-name descname"><span class="pre">growth_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.55</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/MGrowth.html#Linder_gamma_a.growth_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#MGrowth.Linder_gamma_a.growth_parameters" title="Permalink to this definition"></a></dt>
-<dd><p>Computes growth rate <span class="math notranslate nohighlight">\(f = \Omega_\mathrm{m}(a)^\gamma(a)\)</span> and
+<dd><p>Computes growth rate <span class="math notranslate nohighlight">\(f = \Omega_\mathrm{m}(a)^{\gamma(a)}\)</span> and
 <span class="math notranslate nohighlight">\(D(a)=D_\mathrm{ini} \exp{\int_{a_\mathrm{ini}}^a \mathrm{d}\tilde{a} f(\tilde{a})/\tilde{a} }\)</span>
 with <span class="math notranslate nohighlight">\(D_\mathrm{ini} = D_{\Lambda \mathrm{CDM}} (a=10^{-4})\)</span>
 at the scale factor specified by initialisation. The time parameterisation of
 the growth index is taken from arXiv: 2304.07281,
 namely <span class="math notranslate nohighlight">\(\gamma(a) = \gamma_0 + \gamma_1 \frac{(1-a)^2}{a}\)</span>.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>gamma0 (float): growth index, equals 0.555 in standard cosmology
+<dt>Args:</dt><dd><p>gamma0 (float): growth index, equals 0.55 in standard cosmology
 gamma1 (float): growth index time component, equals 0 in standard cosmology</p>
 </dd>
 <dt>Returns:</dt><dd><p>array: D(a), f(a)</p>
