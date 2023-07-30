@@ -8,6 +8,9 @@ import sys
 import mock
 sys.modules['numpy'] = mock.Mock()
 sys.modules['scipy'] = mock.Mock()
+sys.modules['scipy.integrate'] = mock.Mock()
+sys.modules['scipy.special'] = mock.Mock()
+
 
 sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
