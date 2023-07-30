@@ -4,14 +4,12 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
 
 import mock
- 
-MOCK_MODULES = ['numpy', 'scipy']
-for mod_name in MOCK_MODULES:
-sys.modules[mod_name] = mock.Mock()
+sys.modules['numpy'] = mock.Mock()
+sys.modules['scipy'] = mock.Mock()
 
+sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
