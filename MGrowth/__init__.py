@@ -400,6 +400,7 @@ class Linder_gamma_a(MGrowth):
 
         Args:
             gamma0 (float): growth index, equals 0.55 in standard cosmology
+            
             gamma1 (float): growth index time component, equals 0 in standard cosmology 
 
         Returns:
