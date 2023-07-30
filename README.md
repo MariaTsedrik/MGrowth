@@ -50,6 +50,6 @@ D, f = cosmo1.growth_parameters()
 - Linder Gamma a: [Time-dependent growth index](https://arxiv.org/abs/2304.07281)
 
 ## Documentation
-Documentation is available in docs/_build/html/index.html
+Documentation is available here: [http://mgrowth.readthedocs.io/](http://mgrowth.readthedocs.io/)
 
 [![codeastro](https://img.shields.io/badge/Made%20at-Code/Astro-blueviolet.svg)](https://semaphorep.github.io/codeastro/)
