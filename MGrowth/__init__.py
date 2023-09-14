@@ -379,11 +379,11 @@ class Linder_gamma(MGrowth):
             array: D(a), f(a)
         """ 
 
-        f = self.Omega_m(self.aa[1:])**gamma
-        func = lambda a_: self.Omega_m(a_)**gamma/a_
+        f = self.Omega_m(self.aa[1:], self.omega0, self.w0, self.wa)**gamma
+        func = lambda a_: self.Omega_m(a_, self.omega0, self.w0, self.wa)**gamma/a_
         Dini = self.a_start * hyp2f1(1./3, 1., 11./6, (self.omega0 - 1.) / self.omega0 * self.a_start**3)
-        D = [(Dini * np.exp(quad(func, self.a_start, a_i)[0])) for a_i in self.aa[1:]]
-        return D, f      
+        D = np.array([(Dini * np.exp(quad(func, self.a_start, a_i)[0])) for a_i in self.aa[1:]])
+        return D, f 
     
 class Linder_gamma_a(MGrowth):
     def __init__(self, CosmoDict=None):
@@ -407,10 +407,10 @@ class Linder_gamma_a(MGrowth):
             array: D(a), f(a)
         """ 
 
-        f = self.Omega_m(self.aa[1:])**(gamma0 + gamma1 * (1.-self.aa[1:])**2/self.aa[1:])
-        func = lambda a_: self.Omega_m(a_)**(gamma0 + gamma1 * (1.-a_)**2/a_)/a_
+        f = self.Omega_m(self.aa[1:], self.omega0, self.w0, self.wa)**(gamma0 + gamma1 * (1.-self.aa[1:])**2/self.aa[1:])
+        func = lambda a_: self.Omega_m(a_, self.omega0, self.w0, self.wa)**(gamma0 + gamma1 * (1.-a_)**2/a_)/a_
         Dini = self.a_start * hyp2f1(1./3, 1., 11./6, (self.omega0 - 1.) / self.omega0 * self.a_start**3)
-        D = [Dini * np.exp(quad(func, self.a_start, a_i)[0]) for a_i in self.aa[1:]]
+        D = np.array([Dini * np.exp(quad(func, self.a_start, a_i)[0]) for a_i in self.aa[1:]])
         return D, f              
     
 class mu_a(MGrowth):
@@ -432,3 +432,4 @@ class mu_a(MGrowth):
         D, dDda = odeint(self.MG_D_derivatives, [self.a_start, 1.], self.aa, args=(mu_interp, self.omega0, self.w0, self.wa)).T  
         f = self.aa*dDda/D
         return D[1:], f[1:]      
+
