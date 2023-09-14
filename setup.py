@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="MGrowth",
-    version=0.0,
+    version=0.1,
     url="https://github.com/MariaTsedrik/MGrowth",
     author="Maria Tsedrik",
     author_email="",
