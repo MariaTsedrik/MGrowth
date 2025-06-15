@@ -48,6 +48,8 @@ D, f = cosmo1.growth_parameters()
 - f(R):  [Hu-Sawicki f(R)](https://arxiv.org/abs/0705.1158)
 - Linder Gamma: [Growth index parametrisation](https://arxiv.org/abs/astro-ph/0507263)
 - Linder Gamma a: [Time-dependent growth index](https://arxiv.org/abs/2304.07281)
+- Interpolated modification of the Poisson equation: $\mu(a)$, e.g. [dark energy parametrisation of mu in equation (10)](https://arxiv.org/abs/1810.02499)
+- Interpolated modification of the Poisson equation: $\mu(a, k)$, e.g. [equation (27)](https://arxiv.org/abs/1302.1193)
 
 ## Documentation
 Documentation is available here: [http://mgrowth.readthedocs.io/](http://mgrowth.readthedocs.io/)
