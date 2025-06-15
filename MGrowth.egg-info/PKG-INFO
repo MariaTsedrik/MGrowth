@@ -1,9 +1,14 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: MGrowth
-Version: 0.0
+Version: 0.1
 Home-page: https://github.com/MariaTsedrik/MGrowth
 Author: Maria Tsedrik
 Author-email: 
 License: BSD
 Keywords: Modified Gravity Extended Cosmology
 License-File: LICENSE
+Dynamic: author
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: license-file
