@@ -433,26 +433,4 @@ class mu_a(MGrowth):
         f = self.aa*dDda/D
         return D[1:], f[1:]      
 
-class mu_a_k(MGrowth):
-    def __init__(self, CosmoDict=None):
-        super().__init__(CosmoDict)
-   
-    def growth_parameters(self, mu_interp):
-        """
-        Computes scale-dependent growth factor :math:`D` and growth rate :math:`f = \\frac{\mathrm{d} \ln{D}}{\mathrm{d} \ln{a}}`
-        at the scale factor specified by initialisation for a modified cosmology with customed :math:`\mu(a, k)`.
-
-        Args:
-            mu_interp   (array, interpolator):  interpolator for the modification to the gravitational constant at each wave-number, should 
-            allow for :math:`10^{-5} \geq a \geq 1.5` or :math:`10^{-5} \geq a \geq a_{max}+0.5`
-
-            k         (array):   scales in :math:`h/` Mpc
-
-        Returns:
-            array: D(a), f(a)
-        """ 
-        D_f_i = [odeint(self.MG_D_derivatives, [self.a_start, 1.], self.aa, args=(mu_interp_i, self.omega0, self.w0, self.wa)).T for  mu_interp_i in mu_interp]
-        D = np.array([D_i for D_i, _ in D_f_i])
-        f = np.array([self.aa * dDda_i / D_i for D_i, dDda_i in D_f_i])
-
-        return D[1:], f[1:]   
+    
