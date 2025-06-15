@@ -7,9 +7,6 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Chains
-chains/euclid/
-chains/lsst/
 
 
 # Distribution / packaging
